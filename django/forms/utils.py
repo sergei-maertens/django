@@ -20,7 +20,7 @@ def pretty_name(name):
     """Converts 'first_name' to 'First name'"""
     if not name:
         return ''
-    return name.replace('_', ' ').capitalize()
+    return name.replace('_', ' ')
 
 
 def flatatt(attrs):
