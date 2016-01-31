@@ -415,6 +415,7 @@ class GenericRelationsTests(TestCase):
         self.assertEqual(ValuableTaggedItem.objects.count(), 0)
 
     def test_generic_inline_formsets(self):
+        self.maxDiff = None
         GenericFormSet = generic_inlineformset_factory(TaggedItem, extra=1)
         formset = GenericFormSet()
         self.assertHTMLEqual(
