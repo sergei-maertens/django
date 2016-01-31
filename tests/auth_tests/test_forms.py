@@ -17,7 +17,6 @@ from django.forms.fields import CharField, Field
 from django.test import SimpleTestCase, TestCase, mock, override_settings
 from django.utils import translation
 from django.utils.encoding import force_text
-from django.utils.text import capfirst
 from django.utils.translation import ugettext as _
 
 from .settings import AUTH_TEMPLATES
@@ -253,7 +252,7 @@ class AuthenticationFormTest(TestDataMixin, TestCase):
 
         form = CustomAuthenticationForm()
         username_field = User._meta.get_field(User.USERNAME_FIELD)
-        self.assertEqual(form.fields['username'].label, capfirst(username_field.verbose_name))
+        self.assertEqual(form.fields['username'].label, username_field.verbose_name)
 
     def test_username_field_label_empty_string(self):
 

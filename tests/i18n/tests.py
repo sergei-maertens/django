@@ -1099,13 +1099,13 @@ class FormattingTests(SimpleTestCase):
             self.assertTrue(form6.is_valid())
             self.assertHTMLEqual(
                 form6.as_ul(),
-                '<li><label for="id_name">Name:</label>'
+                '<li><label for="id_name">name:</label>'
                 '<input id="id_name" type="text" name="name" value="acme" maxlength="50" /></li>'
-                '<li><label for="id_date_added">Date added:</label>'
+                '<li><label for="id_date_added">date added:</label>'
                 '<input type="text" name="date_added" value="31.12.2009 06:00:00" id="id_date_added" /></li>'
-                '<li><label for="id_cents_paid">Cents paid:</label>'
+                '<li><label for="id_cents_paid">cents paid:</label>'
                 '<input type="text" name="cents_paid" value="59,47" id="id_cents_paid" /></li>'
-                '<li><label for="id_products_delivered">Products delivered:</label>'
+                '<li><label for="id_products_delivered">products delivered:</label>'
                 '<input type="text" name="products_delivered" value="12000" id="id_products_delivered" /></li>'
             )
             self.assertEqual(localize_input(datetime.datetime(2009, 12, 31, 6, 0, 0)), '31.12.2009 06:00:00')

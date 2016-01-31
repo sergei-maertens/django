@@ -113,7 +113,7 @@ class MultiValueFieldTest(SimpleTestCase):
         self.assertHTMLEqual(
             form.as_table(),
             """
-            <tr><th><label for="id_field1_0">Field1:</label></th>
+            <tr><th><label for="id_field1_0">field1:</label></th>
             <td><input type="text" name="field1_0" id="id_field1_0" />
             <select multiple="multiple" name="field1_1" id="id_field1_1">
             <option value="J">John</option>
@@ -136,7 +136,7 @@ class MultiValueFieldTest(SimpleTestCase):
         self.assertHTMLEqual(
             form.as_table(),
             """
-            <tr><th><label for="id_field1_0">Field1:</label></th>
+            <tr><th><label for="id_field1_0">field1:</label></th>
             <td><input type="text" name="field1_0" value="some text" id="id_field1_0" />
             <select multiple="multiple" name="field1_1" id="id_field1_1">
             <option value="J" selected="selected">John</option>

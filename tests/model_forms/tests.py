@@ -492,14 +492,13 @@ class ModelFormBaseTest(TestCase):
             """
             class Meta(SomeCategoryForm.Meta):
                 exclude = ['url']
-
         self.assertHTMLEqual(
             str(SubclassMeta()),
-            """<tr><th><label for="id_name">Name:</label></th>
+            """<tr><th><label for="id_name">name:</label></th>
 <td><input id="id_name" type="text" name="name" maxlength="20" /></td></tr>
-<tr><th><label for="id_slug">Slug:</label></th>
+<tr><th><label for="id_slug">slug:</label></th>
 <td><input id="id_slug" type="text" name="slug" maxlength="20" /></td></tr>
-<tr><th><label for="id_checkbox">Checkbox:</label></th>
+<tr><th><label for="id_checkbox">checkbox:</label></th>
 <td><input type="checkbox" name="checkbox" id="id_checkbox" /></td></tr>"""
         )
 
@@ -515,7 +514,7 @@ class ModelFormBaseTest(TestCase):
             str(OrderFields()),
             """<tr><th><label for="id_url">The URL:</label></th>
 <td><input id="id_url" type="text" name="url" maxlength="40" /></td></tr>
-<tr><th><label for="id_name">Name:</label></th>
+<tr><th><label for="id_name">name:</label></th>
 <td><input id="id_name" type="text" name="name" maxlength="20" /></td></tr>"""
         )
 
@@ -585,7 +584,7 @@ class TestFieldOverridesByFormMeta(SimpleTestCase):
         )
         self.assertHTMLEqual(
             str(form['slug'].label_tag()),
-            '<label for="id_slug">Slug:</label>',
+            '<label for="id_slug">slug:</label>',
         )
 
     def test_help_text_overrides(self):
@@ -1002,17 +1001,17 @@ class ModelFormBasicTests(TestCase):
         f = BaseCategoryForm()
         self.assertHTMLEqual(
             str(f),
-            """<tr><th><label for="id_name">Name:</label></th>
+            """<tr><th><label for="id_name">name:</label></th>
 <td><input id="id_name" type="text" name="name" maxlength="20" /></td></tr>
-<tr><th><label for="id_slug">Slug:</label></th>
+<tr><th><label for="id_slug">slug:</label></th>
 <td><input id="id_slug" type="text" name="slug" maxlength="20" /></td></tr>
 <tr><th><label for="id_url">The URL:</label></th>
 <td><input id="id_url" type="text" name="url" maxlength="40" /></td></tr>"""
         )
         self.assertHTMLEqual(
             str(f.as_ul()),
-            """<li><label for="id_name">Name:</label> <input id="id_name" type="text" name="name" maxlength="20" /></li>
-<li><label for="id_slug">Slug:</label> <input id="id_slug" type="text" name="slug" maxlength="20" /></li>
+            """<li><label for="id_name">name:</label> <input id="id_name" type="text" name="name" maxlength="20" /></li>
+<li><label for="id_slug">slug:</label> <input id="id_slug" type="text" name="slug" maxlength="20" /></li>
 <li><label for="id_url">The URL:</label> <input id="id_url" type="text" name="url" maxlength="40" /></li>"""
         )
         self.assertHTMLEqual(
@@ -1023,8 +1022,8 @@ class ModelFormBasicTests(TestCase):
         f = BaseCategoryForm(auto_id=False)
         self.assertHTMLEqual(
             str(f.as_ul()),
-            """<li>Name: <input type="text" name="name" maxlength="20" /></li>
-<li>Slug: <input type="text" name="slug" maxlength="20" /></li>
+            """<li>name: <input type="text" name="name" maxlength="20" /></li>
+<li>slug: <input type="text" name="slug" maxlength="20" /></li>
 <li>The URL: <input type="text" name="url" maxlength="40" /></li>"""
         )
 
@@ -1039,21 +1038,21 @@ class ModelFormBasicTests(TestCase):
             })
         self.assertHTMLEqual(
             f.as_ul(),
-            '''<li>Headline: <input type="text" name="headline" value="Your headline here" maxlength="50" /></li>
-<li>Slug: <input type="text" name="slug" maxlength="50" /></li>
-<li>Pub date: <input type="text" name="pub_date" /></li>
-<li>Writer: <select name="writer">
+            '''<li>headline: <input type="text" name="headline" value="Your headline here" maxlength="50" /></li>
+<li>slug: <input type="text" name="slug" maxlength="50" /></li>
+<li>pub date: <input type="text" name="pub_date" /></li>
+<li>writer: <select name="writer">
 <option value="" selected="selected">---------</option>
 <option value="%s">Bob Woodward</option>
 <option value="%s">Mike Royko</option>
 </select></li>
-<li>Article: <textarea rows="10" cols="40" name="article"></textarea></li>
-<li>Categories: <select multiple="multiple" name="categories">
+<li>article: <textarea rows="10" cols="40" name="article"></textarea></li>
+<li>categories: <select multiple="multiple" name="categories">
 <option value="%s" selected="selected">Entertainment</option>
 <option value="%s" selected="selected">It&#39;s a test</option>
 <option value="%s">Third test</option>
 </select></li>
-<li>Status: <select name="status">
+<li>status: <select name="status">
 <option value="" selected="selected">---------</option>
 <option value="1">Draft</option>
 <option value="2">Pending</option>
@@ -1065,7 +1064,7 @@ class ModelFormBasicTests(TestCase):
         f = RoykoForm(auto_id=False, instance=self.w_royko)
         self.assertHTMLEqual(
             six.text_type(f),
-            '''<tr><th>Name:</th><td><input type="text" name="name" value="Mike Royko" maxlength="50" /><br />
+            '''<tr><th>name:</th><td><input type="text" name="name" value="Mike Royko" maxlength="50" /><br />
             <span class="helptext">Use both first and last names.</span></td></tr>'''
         )
 
@@ -1081,21 +1080,21 @@ class ModelFormBasicTests(TestCase):
         f = ArticleForm(auto_id=False, instance=art)
         self.assertHTMLEqual(
             f.as_ul(),
-            '''<li>Headline: <input type="text" name="headline" value="Test article" maxlength="50" /></li>
-<li>Slug: <input type="text" name="slug" value="test-article" maxlength="50" /></li>
-<li>Pub date: <input type="text" name="pub_date" value="1988-01-04" /></li>
-<li>Writer: <select name="writer">
+            '''<li>headline: <input type="text" name="headline" value="Test article" maxlength="50" /></li>
+<li>slug: <input type="text" name="slug" value="test-article" maxlength="50" /></li>
+<li>pub date: <input type="text" name="pub_date" value="1988-01-04" /></li>
+<li>writer: <select name="writer">
 <option value="">---------</option>
 <option value="%s">Bob Woodward</option>
 <option value="%s" selected="selected">Mike Royko</option>
 </select></li>
-<li>Article: <textarea rows="10" cols="40" name="article">Hello.</textarea></li>
-<li>Categories: <select multiple="multiple" name="categories">
+<li>article: <textarea rows="10" cols="40" name="article">Hello.</textarea></li>
+<li>categories: <select multiple="multiple" name="categories">
 <option value="%s">Entertainment</option>
 <option value="%s">It&#39;s a test</option>
 <option value="%s">Third test</option>
 </select></li>
-<li>Status: <select name="status">
+<li>status: <select name="status">
 <option value="" selected="selected">---------</option>
 <option value="1">Draft</option>
 <option value="2">Pending</option>
@@ -1135,9 +1134,9 @@ class ModelFormBasicTests(TestCase):
         form = ModelForm()
         self.assertHTMLEqual(
             form.as_ul(),
-            """<li><label for="id_headline">Headline:</label>
+            """<li><label for="id_headline">headline:</label>
 <input id="id_headline" type="text" name="headline" maxlength="50" /></li>
-<li><label for="id_categories">Categories:</label>
+<li><label for="id_categories">categories:</label>
 <select multiple="multiple" name="categories" id="id_categories">
 <option value="%d" selected="selected">Entertainment</option>
 <option value="%d" selected="selected">It&39;s a test</option>
@@ -1197,21 +1196,21 @@ class ModelFormBasicTests(TestCase):
         f = ArticleForm(auto_id=False)
         self.assertHTMLEqual(
             six.text_type(f),
-            '''<tr><th>Headline:</th><td><input type="text" name="headline" maxlength="50" /></td></tr>
-<tr><th>Slug:</th><td><input type="text" name="slug" maxlength="50" /></td></tr>
-<tr><th>Pub date:</th><td><input type="text" name="pub_date" /></td></tr>
-<tr><th>Writer:</th><td><select name="writer">
+            '''<tr><th>headline:</th><td><input type="text" name="headline" maxlength="50" /></td></tr>
+<tr><th>slug:</th><td><input type="text" name="slug" maxlength="50" /></td></tr>
+<tr><th>pub date:</th><td><input type="text" name="pub_date" /></td></tr>
+<tr><th>writer:</th><td><select name="writer">
 <option value="" selected="selected">---------</option>
 <option value="%s">Bob Woodward</option>
 <option value="%s">Mike Royko</option>
 </select></td></tr>
-<tr><th>Article:</th><td><textarea rows="10" cols="40" name="article"></textarea></td></tr>
-<tr><th>Categories:</th><td><select multiple="multiple" name="categories">
+<tr><th>article:</th><td><textarea rows="10" cols="40" name="article"></textarea></td></tr>
+<tr><th>categories:</th><td><select multiple="multiple" name="categories">
 <option value="%s">Entertainment</option>
 <option value="%s">It&#39;s a test</option>
 <option value="%s">Third test</option>
 </select></td></tr>
-<tr><th>Status:</th><td><select name="status">
+<tr><th>status:</th><td><select name="status">
 <option value="" selected="selected">---------</option>
 <option value="1">Draft</option>
 <option value="2">Pending</option>
@@ -1227,21 +1226,21 @@ class ModelFormBasicTests(TestCase):
         f = ArticleForm(auto_id=False, instance=new_art)
         self.assertHTMLEqual(
             f.as_ul(),
-            '''<li>Headline: <input type="text" name="headline" value="New headline" maxlength="50" /></li>
-<li>Slug: <input type="text" name="slug" value="new-headline" maxlength="50" /></li>
-<li>Pub date: <input type="text" name="pub_date" value="1988-01-04" /></li>
-<li>Writer: <select name="writer">
+            '''<li>headline: <input type="text" name="headline" value="New headline" maxlength="50" /></li>
+<li>slug: <input type="text" name="slug" value="new-headline" maxlength="50" /></li>
+<li>pub date: <input type="text" name="pub_date" value="1988-01-04" /></li>
+<li>writer: <select name="writer">
 <option value="">---------</option>
 <option value="%s">Bob Woodward</option>
 <option value="%s" selected="selected">Mike Royko</option>
 </select></li>
-<li>Article: <textarea rows="10" cols="40" name="article">Hello.</textarea></li>
-<li>Categories: <select multiple="multiple" name="categories">
+<li>article: <textarea rows="10" cols="40" name="article">Hello.</textarea></li>
+<li>categories: <select multiple="multiple" name="categories">
 <option value="%s" selected="selected">Entertainment</option>
 <option value="%s">It&#39;s a test</option>
 <option value="%s">Third test</option>
 </select></li>
-<li>Status: <select name="status">
+<li>status: <select name="status">
 <option value="" selected="selected">---------</option>
 <option value="1">Draft</option>
 <option value="2">Pending</option>
@@ -1263,8 +1262,8 @@ class ModelFormBasicTests(TestCase):
         f = PartialArticleForm(auto_id=False)
         self.assertHTMLEqual(
             six.text_type(f),
-            '''<tr><th>Headline:</th><td><input type="text" name="headline" maxlength="50" /></td></tr>
-<tr><th>Pub date:</th><td><input type="text" name="pub_date" /></td></tr>''')
+            '''<tr><th>headline:</th><td><input type="text" name="headline" maxlength="50" /></td></tr>
+<tr><th>pub date:</th><td><input type="text" name="pub_date" /></td></tr>''')
 
         # You can create a form over a subset of the available fields
         # by specifying a 'fields' argument to form_for_instance.
@@ -1284,9 +1283,9 @@ class ModelFormBasicTests(TestCase):
         }, auto_id=False, instance=art)
         self.assertHTMLEqual(
             f.as_ul(),
-            '''<li>Headline: <input type="text" name="headline" value="New headline" maxlength="50" /></li>
-<li>Slug: <input type="text" name="slug" value="new-headline" maxlength="50" /></li>
-<li>Pub date: <input type="text" name="pub_date" value="1988-01-04" /></li>'''
+            '''<li>headline: <input type="text" name="headline" value="New headline" maxlength="50" /></li>
+<li>slug: <input type="text" name="slug" value="new-headline" maxlength="50" /></li>
+<li>pub date: <input type="text" name="pub_date" value="1988-01-04" /></li>'''
         )
         self.assertTrue(f.is_valid())
         new_art = f.save()
@@ -1375,21 +1374,21 @@ class ModelFormBasicTests(TestCase):
         f = ArticleForm(auto_id=False)
         self.assertHTMLEqual(
             f.as_ul(),
-            '''<li>Headline: <input type="text" name="headline" maxlength="50" /></li>
-<li>Slug: <input type="text" name="slug" maxlength="50" /></li>
-<li>Pub date: <input type="text" name="pub_date" /></li>
-<li>Writer: <select name="writer">
+            '''<li>headline: <input type="text" name="headline" maxlength="50" /></li>
+<li>slug: <input type="text" name="slug" maxlength="50" /></li>
+<li>pub date: <input type="text" name="pub_date" /></li>
+<li>writer: <select name="writer">
 <option value="" selected="selected">---------</option>
 <option value="%s">Bob Woodward</option>
 <option value="%s">Mike Royko</option>
 </select></li>
-<li>Article: <textarea rows="10" cols="40" name="article"></textarea></li>
-<li>Categories: <select multiple="multiple" name="categories">
+<li>article: <textarea rows="10" cols="40" name="article"></textarea></li>
+<li>categories: <select multiple="multiple" name="categories">
 <option value="%s">Entertainment</option>
 <option value="%s">It&#39;s a test</option>
 <option value="%s">Third test</option>
 </select> </li>
-<li>Status: <select name="status">
+<li>status: <select name="status">
 <option value="" selected="selected">---------</option>
 <option value="1">Draft</option>
 <option value="2">Pending</option>
@@ -1400,23 +1399,23 @@ class ModelFormBasicTests(TestCase):
         w_bernstein = Writer.objects.create(name='Carl Bernstein')
         self.assertHTMLEqual(
             f.as_ul(),
-            '''<li>Headline: <input type="text" name="headline" maxlength="50" /></li>
-<li>Slug: <input type="text" name="slug" maxlength="50" /></li>
-<li>Pub date: <input type="text" name="pub_date" /></li>
-<li>Writer: <select name="writer">
+            '''<li>headline: <input type="text" name="headline" maxlength="50" /></li>
+<li>slug: <input type="text" name="slug" maxlength="50" /></li>
+<li>pub date: <input type="text" name="pub_date" /></li>
+<li>writer: <select name="writer">
 <option value="" selected="selected">---------</option>
 <option value="%s">Bob Woodward</option>
 <option value="%s">Carl Bernstein</option>
 <option value="%s">Mike Royko</option>
 </select></li>
-<li>Article: <textarea rows="10" cols="40" name="article"></textarea></li>
-<li>Categories: <select multiple="multiple" name="categories">
+<li>article: <textarea rows="10" cols="40" name="article"></textarea></li>
+<li>categories: <select multiple="multiple" name="categories">
 <option value="%s">Entertainment</option>
 <option value="%s">It&#39;s a test</option>
 <option value="%s">Third test</option>
 <option value="%s">Fourth</option>
 </select></li>
-<li>Status: <select name="status">
+<li>status: <select name="status">
 <option value="" selected="selected">---------</option>
 <option value="1">Draft</option>
 <option value="2">Pending</option>
@@ -1756,12 +1755,12 @@ class ModelOneToOneFieldTests(TestCase):
         form = WriterProfileForm()
         self.assertHTMLEqual(
             form.as_p(),
-            '''<p><label for="id_writer">Writer:</label> <select name="writer" id="id_writer">
+            '''<p><label for="id_writer">writer:</label> <select name="writer" id="id_writer">
 <option value="" selected="selected">---------</option>
 <option value="%s">Bob Woodward</option>
 <option value="%s">Mike Royko</option>
 </select></p>
-<p><label for="id_age">Age:</label> <input type="number" name="age" id="id_age" min="0" /></p>''' % (
+<p><label for="id_age">age:</label> <input type="number" name="age" id="id_age" min="0" /></p>''' % (
                 self.w_woodward.pk, self.w_royko.pk,
             )
         )
@@ -1777,12 +1776,12 @@ class ModelOneToOneFieldTests(TestCase):
         form = WriterProfileForm(instance=instance)
         self.assertHTMLEqual(
             form.as_p(),
-            '''<p><label for="id_writer">Writer:</label> <select name="writer" id="id_writer">
+            '''<p><label for="id_writer">writer:</label> <select name="writer" id="id_writer">
 <option value="">---------</option>
 <option value="%s" selected="selected">Bob Woodward</option>
 <option value="%s">Mike Royko</option>
 </select></p>
-<p><label for="id_age">Age:</label> <input type="number" name="age" value="65" id="id_age" min="0" /></p>''' % (
+<p><label for="id_age">age:</label> <input type="number" name="age" value="65" id="id_age" min="0" /></p>''' % (
                 self.w_woodward.pk, self.w_royko.pk,
             )
         )
@@ -2347,7 +2346,7 @@ class OtherModelFormTests(TestCase):
 
         self.assertHTMLEqual(
             six.text_type(CategoryForm()),
-            '''<tr><th><label for="id_description">Description:</label></th>
+            '''<tr><th><label for="id_description">description:</label></th>
 <td><input type="text" name="description" id="id_description" /></td></tr>
 <tr><th><label for="id_url">The URL:</label></th>
 <td><input id="id_url" type="text" name="url" maxlength="40" /></td></tr>'''
@@ -2368,7 +2367,7 @@ class OtherModelFormTests(TestCase):
                          ['name'])
         self.assertHTMLEqual(
             six.text_type(CustomFieldForExclusionForm()),
-            '''<tr><th><label for="id_name">Name:</label></th>
+            '''<tr><th><label for="id_name">name:</label></th>
 <td><input id="id_name" type="text" name="name" maxlength="10" /></td></tr>'''
         )
 
@@ -2383,8 +2382,8 @@ class OtherModelFormTests(TestCase):
         self.maxDiff = 1024
         self.assertHTMLEqual(
             form.as_p(),
-            """<p><label for="id_name">Name:</label> <input id="id_name" type="text" name="name" maxlength="50" /></p>
-        <p><label for="id_colours">Colours:</label> <select multiple="multiple" name="colours" id="id_colours">
+            """<p><label for="id_name">name:</label> <input id="id_name" type="text" name="name" maxlength="50" /></p>
+        <p><label for="id_colours">colours:</label> <select multiple="multiple" name="colours" id="id_colours">
         <option value="%(blue_pk)s">Blue</option>
         </select></p>"""
             % {'blue_pk': colour.pk})
@@ -2401,15 +2400,15 @@ class OtherModelFormTests(TestCase):
         self.assertHTMLEqual(
             form.as_p(),
             """
-            <p><label for="id_title">Title:</label> <input id="id_title" maxlength="30" name="title" type="text" /></p>
-            <p><label for="id_date_published">Date published:</label>
+            <p><label for="id_title">title:</label> <input id="id_title" maxlength="30" name="title" type="text" /></p>
+            <p><label for="id_date_published">date published:</label>
                 <input id="id_date_published" name="date_published" type="text" value="{0}" />
                 <input id="initial-id_date_published" name="initial-date_published" type="hidden" value="{0}" /></p>
-            <p><label for="id_mode">Mode:</label> <select id="id_mode" name="mode">
+            <p><label for="id_mode">mode:</label> <select id="id_mode" name="mode">
                 <option value="di" selected="selected">direct</option>
                 <option value="de">delayed</option></select>
                 <input id="initial-id_mode" name="initial-mode" type="hidden" value="di" /></p>
-           <p><label for="id_category">Category:</label> <select id="id_category" name="category">
+           <p><label for="id_category">category:</label> <select id="id_category" name="category">
                 <option value="1">Games</option>
                 <option value="2">Comics</option>
                 <option value="3" selected="selected">Novel</option></select>

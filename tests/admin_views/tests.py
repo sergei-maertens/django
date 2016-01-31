@@ -4617,7 +4617,7 @@ class ReadonlyTest(AdminFieldExtractionMixin, TestCase):
         self.assertContains(response, "<input", count=15)
         self.assertContains(response, formats.localize(datetime.date.today()))
         self.assertContains(response,
-            "<label>Awesomeness level:</label>")
+            "<label>awesomeness level:</label>")
         self.assertContains(response, "Very awesome.")
         self.assertContains(response, "Unknown coolness.")
         self.assertContains(response, "foo")

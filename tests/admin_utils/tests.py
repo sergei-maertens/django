@@ -228,20 +228,20 @@ class UtilsTests(SimpleTestCase):
             return "nothing"
         self.assertEqual(
             label_for_field(test_callable, Article),
-            "Test callable"
+            "test callable"
         )
         self.assertEqual(
             label_for_field(test_callable, Article, return_attr=True),
-            ("Test callable", test_callable)
+            ("test callable", test_callable)
         )
 
         self.assertEqual(
             label_for_field("test_from_model", Article),
-            "Test from model"
+            "test from model"
         )
         self.assertEqual(
             label_for_field("test_from_model", Article, return_attr=True),
-            ("Test from model", Article.test_from_model)
+            ("test from model", Article.test_from_model)
         )
         self.assertEqual(
             label_for_field("test_from_model_with_override", Article),

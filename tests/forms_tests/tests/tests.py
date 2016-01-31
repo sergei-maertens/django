@@ -109,23 +109,23 @@ class ModelFormCallableModelDefault(TestCase):
         ChoiceOptionModel.objects.create(id=3, name='option 3')
         self.assertHTMLEqual(
             ChoiceFieldForm().as_p(),
-            """<p><label for="id_choice">Choice:</label> <select name="choice" id="id_choice">
+            """<p><label for="id_choice">choice:</label> <select name="choice" id="id_choice">
 <option value="1" selected="selected">ChoiceOption 1</option>
 <option value="2">ChoiceOption 2</option>
 <option value="3">ChoiceOption 3</option>
 </select><input type="hidden" name="initial-choice" value="1" id="initial-id_choice" /></p>
-<p><label for="id_choice_int">Choice int:</label> <select name="choice_int" id="id_choice_int">
+<p><label for="id_choice_int">choice int:</label> <select name="choice_int" id="id_choice_int">
 <option value="1" selected="selected">ChoiceOption 1</option>
 <option value="2">ChoiceOption 2</option>
 <option value="3">ChoiceOption 3</option>
 </select><input type="hidden" name="initial-choice_int" value="1" id="initial-id_choice_int" /></p>
-<p><label for="id_multi_choice">Multi choice:</label>
+<p><label for="id_multi_choice">multi choice:</label>
 <select multiple="multiple" name="multi_choice" id="id_multi_choice">
 <option value="1" selected="selected">ChoiceOption 1</option>
 <option value="2">ChoiceOption 2</option>
 <option value="3">ChoiceOption 3</option>
 </select><input type="hidden" name="initial-multi_choice" value="1" id="initial-id_multi_choice_0" /></p>
-<p><label for="id_multi_choice_int">Multi choice int:</label>
+<p><label for="id_multi_choice_int">multi choice int:</label>
 <select multiple="multiple" name="multi_choice_int" id="id_multi_choice_int">
 <option value="1" selected="selected">ChoiceOption 1</option>
 <option value="2">ChoiceOption 2</option>
@@ -145,24 +145,24 @@ class ModelFormCallableModelDefault(TestCase):
                 'multi_choice': [obj2, obj3],
                 'multi_choice_int': ChoiceOptionModel.objects.exclude(name="default"),
             }).as_p(),
-            """<p><label for="id_choice">Choice:</label> <select name="choice" id="id_choice">
+            """<p><label for="id_choice">choice:</label> <select name="choice" id="id_choice">
 <option value="1">ChoiceOption 1</option>
 <option value="2" selected="selected">ChoiceOption 2</option>
 <option value="3">ChoiceOption 3</option>
 </select><input type="hidden" name="initial-choice" value="2" id="initial-id_choice" /></p>
-<p><label for="id_choice_int">Choice int:</label> <select name="choice_int" id="id_choice_int">
+<p><label for="id_choice_int">choice int:</label> <select name="choice_int" id="id_choice_int">
 <option value="1">ChoiceOption 1</option>
 <option value="2" selected="selected">ChoiceOption 2</option>
 <option value="3">ChoiceOption 3</option>
 </select><input type="hidden" name="initial-choice_int" value="2" id="initial-id_choice_int" /></p>
-<p><label for="id_multi_choice">Multi choice:</label>
+<p><label for="id_multi_choice">multi choice:</label>
 <select multiple="multiple" name="multi_choice" id="id_multi_choice">
 <option value="1">ChoiceOption 1</option>
 <option value="2" selected="selected">ChoiceOption 2</option>
 <option value="3" selected="selected">ChoiceOption 3</option>
 </select><input type="hidden" name="initial-multi_choice" value="2" id="initial-id_multi_choice_0" />
 <input type="hidden" name="initial-multi_choice" value="3" id="initial-id_multi_choice_1" /></p>
-<p><label for="id_multi_choice_int">Multi choice int:</label>
+<p><label for="id_multi_choice_int">multi choice int:</label>
 <select multiple="multiple" name="multi_choice_int" id="id_multi_choice_int">
 <option value="1">ChoiceOption 1</option>
 <option value="2" selected="selected">ChoiceOption 2</option>
@@ -308,8 +308,8 @@ class EmptyLabelTestCase(TestCase):
         f = EmptyCharLabelChoiceForm()
         self.assertHTMLEqual(
             f.as_p(),
-            """<p><label for="id_name">Name:</label> <input id="id_name" maxlength="10" name="name" type="text" /></p>
-<p><label for="id_choice">Choice:</label> <select id="id_choice" name="choice">
+            """<p><label for="id_name">name:</label> <input id="id_name" maxlength="10" name="name" type="text" /></p>
+<p><label for="id_choice">choice:</label> <select id="id_choice" name="choice">
 <option value="" selected="selected">No Preference</option>
 <option value="f">Foo</option>
 <option value="b">Bar</option>
@@ -320,8 +320,8 @@ class EmptyLabelTestCase(TestCase):
         f = EmptyCharLabelNoneChoiceForm()
         self.assertHTMLEqual(
             f.as_p(),
-            """<p><label for="id_name">Name:</label> <input id="id_name" maxlength="10" name="name" type="text" /></p>
-<p><label for="id_choice_string_w_none">Choice string w none:</label>
+            """<p><label for="id_name">name:</label> <input id="id_name" maxlength="10" name="name" type="text" /></p>
+<p><label for="id_choice_string_w_none">choice string w none:</label>
 <select id="id_choice_string_w_none" name="choice_string_w_none">
 <option value="" selected="selected">No Preference</option>
 <option value="f">Foo</option>
@@ -350,8 +350,8 @@ class EmptyLabelTestCase(TestCase):
         f = EmptyIntegerLabelChoiceForm()
         self.assertHTMLEqual(
             f.as_p(),
-            """<p><label for="id_name">Name:</label> <input id="id_name" maxlength="10" name="name" type="text" /></p>
-<p><label for="id_choice_integer">Choice integer:</label>
+            """<p><label for="id_name">name:</label> <input id="id_name" maxlength="10" name="name" type="text" /></p>
+<p><label for="id_choice_integer">choice integer:</label>
 <select id="id_choice_integer" name="choice_integer">
 <option value="" selected="selected">No Preference</option>
 <option value="1">Foo</option>
@@ -369,9 +369,9 @@ class EmptyLabelTestCase(TestCase):
         f = EmptyIntegerLabelChoiceForm(instance=none_model)
         self.assertHTMLEqual(
             f.as_p(),
-            """<p><label for="id_name">Name:</label>
+            """<p><label for="id_name">name:</label>
 <input id="id_name" maxlength="10" name="name" type="text" value="none-test"/></p>
-<p><label for="id_choice_integer">Choice integer:</label>
+<p><label for="id_choice_integer">choice integer:</label>
 <select id="id_choice_integer" name="choice_integer">
 <option value="" selected="selected">No Preference</option>
 <option value="1">Foo</option>
@@ -383,9 +383,9 @@ class EmptyLabelTestCase(TestCase):
         f = EmptyIntegerLabelChoiceForm(instance=foo_model)
         self.assertHTMLEqual(
             f.as_p(),
-            """<p><label for="id_name">Name:</label>
+            """<p><label for="id_name">name:</label>
 <input id="id_name" maxlength="10" name="name" type="text" value="foo-test"/></p>
-<p><label for="id_choice_integer">Choice integer:</label>
+<p><label for="id_choice_integer">choice integer:</label>
 <select id="id_choice_integer" name="choice_integer">
 <option value="">No Preference</option>
 <option value="1" selected="selected">Foo</option>

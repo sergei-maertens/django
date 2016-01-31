@@ -124,7 +124,7 @@ class GenericAdminViewTest(TestDataMixin, TestCase):
         self.assertHTMLEqual(
             formset.forms[0].as_p(),
             '<p><label for="id_generic_inline_admin-media-content_type-object_id-0-url">'
-            'Url:</label> <input id="id_generic_inline_admin-media-content_type-object_id-0-url" '
+            'url:</label> <input id="id_generic_inline_admin-media-content_type-object_id-0-url" '
             'type="url" name="generic_inline_admin-media-content_type-object_id-0-url" '
             'value="http://example.com/podcast.mp3" maxlength="200" />'
             '<input type="hidden" name="generic_inline_admin-media-content_type-object_id-0-id" '
@@ -134,7 +134,7 @@ class GenericAdminViewTest(TestDataMixin, TestCase):
         self.assertHTMLEqual(
             formset.forms[1].as_p(),
             '<p><label for="id_generic_inline_admin-media-content_type-object_id-1-url">'
-            'Url:</label> <input id="id_generic_inline_admin-media-content_type-object_id-1-url" '
+            'url:</label> <input id="id_generic_inline_admin-media-content_type-object_id-1-url" '
             'type="url" name="generic_inline_admin-media-content_type-object_id-1-url" '
             'value="http://example.com/logo.png" maxlength="200" />'
             '<input type="hidden" name="generic_inline_admin-media-content_type-object_id-1-id" '
@@ -143,7 +143,7 @@ class GenericAdminViewTest(TestDataMixin, TestCase):
         )
         self.assertHTMLEqual(
             formset.forms[2].as_p(),
-            '<p><label for="id_generic_inline_admin-media-content_type-object_id-2-url">Url:</label>'
+            '<p><label for="id_generic_inline_admin-media-content_type-object_id-2-url">url:</label>'
             '<input id="id_generic_inline_admin-media-content_type-object_id-2-url" type="url" '
             'name="generic_inline_admin-media-content_type-object_id-2-url" maxlength="200" />'
             '<input type="hidden" name="generic_inline_admin-media-content_type-object_id-2-id" '
@@ -155,7 +155,7 @@ class GenericAdminViewTest(TestDataMixin, TestCase):
         self.assertEqual(len(formset.forms), 5)
         self.assertHTMLEqual(
             formset.forms[0].as_p(),
-            '<p><label for="id_generic_inline_admin-media-content_type-object_id-0-url">Url:</label>'
+            '<p><label for="id_generic_inline_admin-media-content_type-object_id-0-url">url:</label>'
             '<input id="id_generic_inline_admin-media-content_type-object_id-0-url" type="url" '
             'name="generic_inline_admin-media-content_type-object_id-0-url"'
             'value="http://example.com/logo.png" maxlength="200" />'
@@ -165,7 +165,7 @@ class GenericAdminViewTest(TestDataMixin, TestCase):
         )
         self.assertHTMLEqual(
             formset.forms[1].as_p(),
-            '<p><label for="id_generic_inline_admin-media-content_type-object_id-1-url">Url:</label>'
+            '<p><label for="id_generic_inline_admin-media-content_type-object_id-1-url">url:</label>'
             '<input id="id_generic_inline_admin-media-content_type-object_id-1-url" type="url" '
             'name="generic_inline_admin-media-content_type-object_id-1-url" '
             'value="http://example.com/podcast.mp3" maxlength="200" />'
@@ -176,7 +176,7 @@ class GenericAdminViewTest(TestDataMixin, TestCase):
         self.assertHTMLEqual(
             formset.forms[2].as_p(),
             '<p><label for="id_generic_inline_admin-media-content_type-object_id-2-url">'
-            'Url:</label> <input id="id_generic_inline_admin-media-content_type-object_id-2-url" '
+            'url:</label> <input id="id_generic_inline_admin-media-content_type-object_id-2-url" '
             'type="url" name="generic_inline_admin-media-content_type-object_id-2-url" maxlength="200" />'
             '<input type="hidden" name="generic_inline_admin-media-content_type-object_id-2-id" '
             'id="id_generic_inline_admin-media-content_type-object_id-2-id" /></p>'
@@ -187,7 +187,7 @@ class GenericAdminViewTest(TestDataMixin, TestCase):
         self.assertEqual(len(formset.forms), 4)
         self.assertHTMLEqual(
             formset.forms[0].as_p(),
-            '<p><label for="id_generic_inline_admin-media-content_type-object_id-0-url">Url:</label>'
+            '<p><label for="id_generic_inline_admin-media-content_type-object_id-0-url">url:</label>'
             ' <input id="id_generic_inline_admin-media-content_type-object_id-0-url" type="url" '
             'name="generic_inline_admin-media-content_type-object_id-0-url" '
             'value="http://example.com/logo.png" maxlength="200" />'
@@ -198,7 +198,7 @@ class GenericAdminViewTest(TestDataMixin, TestCase):
         self.assertHTMLEqual(
             formset.forms[1].as_p(),
             '<p><label for="id_generic_inline_admin-media-content_type-object_id-1-url">'
-            'Url:</label> <input id="id_generic_inline_admin-media-content_type-object_id-1-url" '
+            'url:</label> <input id="id_generic_inline_admin-media-content_type-object_id-1-url" '
             'type="url" name="generic_inline_admin-media-content_type-object_id-1-url" maxlength="200" />'
             '<input type="hidden" name="generic_inline_admin-media-content_type-object_id-1-id" '
             'id="id_generic_inline_admin-media-content_type-object_id-1-id" /></p>'

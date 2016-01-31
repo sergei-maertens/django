@@ -415,15 +415,14 @@ class GenericRelationsTests(TestCase):
         self.assertEqual(ValuableTaggedItem.objects.count(), 0)
 
     def test_generic_inline_formsets(self):
-        self.maxDiff = None
         GenericFormSet = generic_inlineformset_factory(TaggedItem, extra=1)
         formset = GenericFormSet()
         self.assertHTMLEqual(
             ''.join(form.as_p() for form in formset.forms),
             """<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-tag">
-Tag:</label> <input id="id_generic_relations-taggeditem-content_type-object_id-0-tag" type="text"
+tag:</label> <input id="id_generic_relations-taggeditem-content_type-object_id-0-tag" type="text"
 name="generic_relations-taggeditem-content_type-object_id-0-tag" maxlength="50" /></p>
-<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-DELETE">Delete:</label>
+<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-DELETE">delete:</label>
 <input type="checkbox" name="generic_relations-taggeditem-content_type-object_id-0-DELETE"
 id="id_generic_relations-taggeditem-content_type-object_id-0-DELETE" />
 <input type="hidden" name="generic_relations-taggeditem-content_type-object_id-0-id"
@@ -434,9 +433,9 @@ id="id_generic_relations-taggeditem-content_type-object_id-0-id" /></p>"""
         self.assertHTMLEqual(
             ''.join(form.as_p() for form in formset.forms),
             """<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-tag">
-Tag:</label> <input id="id_generic_relations-taggeditem-content_type-object_id-0-tag"
+tag:</label> <input id="id_generic_relations-taggeditem-content_type-object_id-0-tag"
 type="text" name="generic_relations-taggeditem-content_type-object_id-0-tag" maxlength="50" /></p>
-<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-DELETE">Delete:</label>
+<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-DELETE">delete:</label>
 <input type="checkbox" name="generic_relations-taggeditem-content_type-object_id-0-DELETE"
 id="id_generic_relations-taggeditem-content_type-object_id-0-DELETE" /><input type="hidden"
 name="generic_relations-taggeditem-content_type-object_id-0-id"
@@ -454,18 +453,18 @@ id="id_generic_relations-taggeditem-content_type-object_id-0-id" /></p>"""
         ).id
         self.assertHTMLEqual(
             ''.join(form.as_p() for form in formset.forms),
-            """<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-tag">Tag:</label>
+            """<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-tag">tag:</label>
 <input id="id_generic_relations-taggeditem-content_type-object_id-0-tag" type="text"
 name="generic_relations-taggeditem-content_type-object_id-0-tag" value="shiny" maxlength="50" /></p>
-<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-DELETE">Delete:</label>
+<p><label for="id_generic_relations-taggeditem-content_type-object_id-0-DELETE">delete:</label>
 <input type="checkbox" name="generic_relations-taggeditem-content_type-object_id-0-DELETE"
 id="id_generic_relations-taggeditem-content_type-object_id-0-DELETE" />
 <input type="hidden" name="generic_relations-taggeditem-content_type-object_id-0-id"
 value="%s" id="id_generic_relations-taggeditem-content_type-object_id-0-id" /></p>
-<p><label for="id_generic_relations-taggeditem-content_type-object_id-1-tag">Tag:</label>
+<p><label for="id_generic_relations-taggeditem-content_type-object_id-1-tag">tag:</label>
 <input id="id_generic_relations-taggeditem-content_type-object_id-1-tag" type="text"
 name="generic_relations-taggeditem-content_type-object_id-1-tag" maxlength="50" /></p>
-<p><label for="id_generic_relations-taggeditem-content_type-object_id-1-DELETE">Delete:</label>
+<p><label for="id_generic_relations-taggeditem-content_type-object_id-1-DELETE">delete:</label>
 <input type="checkbox" name="generic_relations-taggeditem-content_type-object_id-1-DELETE"
 id="id_generic_relations-taggeditem-content_type-object_id-1-DELETE" />
 <input type="hidden" name="generic_relations-taggeditem-content_type-object_id-1-id"
@@ -476,9 +475,9 @@ id="id_generic_relations-taggeditem-content_type-object_id-1-id" /></p>""" % tag
         formset = GenericFormSet(instance=lion, prefix='x')
         self.assertHTMLEqual(
             ''.join(form.as_p() for form in formset.forms),
-            """<p><label for="id_x-0-tag">Tag:</label>
+            """<p><label for="id_x-0-tag">tag:</label>
 <input id="id_x-0-tag" type="text" name="x-0-tag" maxlength="50" /></p>
-<p><label for="id_x-0-DELETE">Delete:</label> <input type="checkbox" name="x-0-DELETE" id="id_x-0-DELETE" />
+<p><label for="id_x-0-DELETE">delete:</label> <input type="checkbox" name="x-0-DELETE" id="id_x-0-DELETE" />
 <input type="hidden" name="x-0-id" id="id_x-0-id" /></p>"""
         )
 

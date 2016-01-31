@@ -24,8 +24,8 @@ class FormsRegressionsTestCase(TestCase):
 
         self.assertHTMLEqual(
             TestForm(auto_id=False).as_p(),
-            '<p>F1: <input type="text" class="special" name="f1" maxlength="10" /></p>\n'
-            '<p>F2: <input type="text" class="special" name="f2" /></p>'
+            '<p>f1: <input type="text" class="special" name="f1" maxlength="10" /></p>\n'
+            '<p>f2: <input type="text" class="special" name="f2" /></p>'
         )
 
     def test_regression_3600(self):
