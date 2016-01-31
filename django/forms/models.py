@@ -20,7 +20,7 @@ from django.forms.widgets import (
 )
 from django.utils import six
 from django.utils.encoding import force_text, smart_text
-from django.utils.text import capfirst, get_text_list
+from django.utils.text import get_text_list
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 __all__ = (
@@ -926,7 +926,7 @@ class BaseInlineFormSet(BaseModelFormSet):
             # Model field to get the label, since we need that for error messages.
             name = self.fk.name
             kwargs = {
-                'label': getattr(form.fields.get(name), 'label', capfirst(self.fk.verbose_name))
+                'label': getattr(form.fields.get(name), 'label', self.fk.verbose_name)
             }
             if self.fk.remote_field.field_name != self.fk.remote_field.model._meta.pk.name:
                 kwargs['to_field'] = self.fk.remote_field.field_name

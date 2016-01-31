@@ -182,7 +182,7 @@ class AdminReadonlyField(object):
         label = self.field['label']
         return format_html('<label{}>{}:</label>',
                            flatatt(attrs),
-                           capfirst(force_text(label)))
+                           force_text(label))
 
     def contents(self):
         from django.contrib.admin.templatetags.admin_list import _boolean_icon

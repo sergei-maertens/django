@@ -36,7 +36,6 @@ from django.utils.encoding import (
 from django.utils.functional import Promise, cached_property, curry
 from django.utils.ipv6 import clean_ipv6_address
 from django.utils.itercompat import is_iterable
-from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
 
 # Avoid "TypeError: Item in ``from list'' not a string" -- unicode_literals
@@ -877,7 +876,7 @@ class Field(RegisterLookupMixin):
         Returns a django.forms.Field instance for this database Field.
         """
         defaults = {'required': not self.blank,
-                    'label': capfirst(self.verbose_name),
+                    'label': self.verbose_name,
                     'help_text': self.help_text}
         if self.has_default():
             if callable(self.default):
@@ -2087,7 +2086,7 @@ class NullBooleanField(Field):
         defaults = {
             'form_class': forms.NullBooleanField,
             'required': not self.blank,
-            'label': capfirst(self.verbose_name),
+            'label': self.verbose_name,
             'help_text': self.help_text}
         defaults.update(kwargs)
         return super(NullBooleanField, self).formfield(**defaults)
