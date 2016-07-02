@@ -935,8 +935,13 @@ class BaseInlineFormSet(BaseModelFormSet):
             # The foreign key field might not be on the form, so we poke at the
             # Model field to get the label, since we need that for error messages.
             name = self.fk.name
+            default_label = self.fk.verbose_name
+            # self._verbose_name is set if an explicit verbose_name was passed in.
+            # if this is the case, don't touch the capitalization
+            if not self.fk._verbose_name:
+                default_label = capfirst(default_label)
             kwargs = {
-                'label': getattr(form.fields.get(name), 'label', capfirst(self.fk.verbose_name))
+                'label': getattr(form.fields.get(name), 'label', default_label)
             }
             if self.fk.remote_field.field_name != self.fk.remote_field.model._meta.pk.name:
                 kwargs['to_field'] = self.fk.remote_field.field_name

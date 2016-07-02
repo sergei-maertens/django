@@ -136,7 +136,13 @@ In addition, each generated form field has attributes set as follows:
   ``False`` on the form field. Otherwise, ``required=True``.
 
 * The form field's ``label`` is set to the ``verbose_name`` of the model
-  field, with the first character capitalized.
+  field. If the ``verbose_name`` was not explicitly provided, the first letter
+  is capitalized. If it was explicitly provided, Django does not capitalize it.
+
+  .. versionchanged: 1.11
+
+  The form no longer capitalizes the label derived from ``verbose_name`` if
+  ``verbose_name`` was set explicitly on the model field.
 
 * The form field's ``help_text`` is set to the ``help_text`` of the model
   field.

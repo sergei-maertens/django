@@ -19,6 +19,7 @@ from django.forms.models import (
 )
 from django.template import Context, Template
 from django.test import SimpleTestCase, TestCase, skipUnlessDBFeature
+from django.test.utils import isolate_apps
 from django.utils import six
 from django.utils._os import upath
 
@@ -564,6 +565,28 @@ class ModelFormBaseTest(TestCase):
 
         self.assertEqual(list(OrderFields2.base_fields),
                          ['slug', 'name'])
+
+    @isolate_apps('model_forms')
+    def test_label_from_explicit_verbose_name(self):
+        """
+        Assert that Django does not capitalize explicit verbose_name derived labels.
+        """
+
+        class LabelModel(models.Model):
+            title = models.CharField('title', max_length=50)
+            short_description = models.TextField()
+
+            class Meta:
+                app_label = 'forms_tests'
+
+        class LabelModelForm(forms.ModelForm):
+            class Meta:
+                model = LabelModel
+                fields = ('title', 'short_description')
+
+        form = LabelModelForm()
+        self.assertEqual(form.fields['title'].label, 'title')
+        self.assertEqual(form.fields['short_description'].label, 'Short description')
 
 
 class FieldOverridesByFormMetaForm(forms.ModelForm):

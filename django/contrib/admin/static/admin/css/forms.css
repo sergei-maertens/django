@@ -34,6 +34,10 @@ label {
     font-size: 13px;
 }
 
+label::first-letter {
+   text-transform: capitalize;
+}
+
 .required label, label.required {
     font-weight: bold;
     color: #333;

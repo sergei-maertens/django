@@ -315,6 +315,10 @@ Miscellaneous
   new :meth:`.AbstractUser.clean` method so that normalization is applied in
   cases like model form validation.
 
+* :class:`~django.forms.ModelForm` fields no longer capitalize form fields if
+  the corresponding model field has an explicit
+  :attr:`verbose_name <django.db.models.Field.verbose_name>` specified
+
 .. _deprecated-features-1.11:
 
 Features deprecated in 1.11

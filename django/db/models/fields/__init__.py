@@ -837,8 +837,14 @@ class Field(RegisterLookupMixin):
         """
         Returns a django.forms.Field instance for this database Field.
         """
+        label = self.verbose_name
+        # self._verbose_name is set if an explicit verbose_name was passed in.
+        # if this is the case, don't touch the capitalization
+        if not self._verbose_name:
+            label = capfirst(label)
+
         defaults = {'required': not self.blank,
-                    'label': capfirst(self.verbose_name),
+                    'label': label,
                     'help_text': self.help_text}
         if self.has_default():
             if callable(self.default):
