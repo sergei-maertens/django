@@ -28,7 +28,7 @@ from django.utils.dateparse import (
     parse_date, parse_datetime, parse_duration, parse_time,
 )
 from django.utils.deprecation import (
-    RemovedInDjango20Warning, warn_about_renamed_method,
+    RemovedInDjango20Warning, RemovedInDjango21Warning, warn_about_renamed_method,
 )
 from django.utils.duration import duration_string
 from django.utils.encoding import (
@@ -39,6 +39,7 @@ from django.utils.ipv6 import clean_ipv6_address
 from django.utils.itercompat import is_iterable
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
+
 
 # Avoid "TypeError: Item in ``from list'' not a string" -- unicode_literals
 # makes these strings unicode
@@ -837,8 +838,14 @@ class Field(RegisterLookupMixin):
         """
         Returns a django.forms.Field instance for this database Field.
         """
+        label = capfirst(self.verbose_name)
+        if self._verbose_name:
+            warning_msg = "Labels derived from explicit `verbose_name`s will no longer be auto-capitalized"
+            warnings.filterwarnings("once", warning_msg, RemovedInDjango21Warning)
+            warnings.warn(warning_msg, RemovedInDjango21Warning, stacklevel=2)
+
         defaults = {'required': not self.blank,
-                    'label': capfirst(self.verbose_name),
+                    'label': label,
                     'help_text': self.help_text}
         if self.has_default():
             if callable(self.default):
