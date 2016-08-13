@@ -191,12 +191,12 @@ class ForNode(Node):
                     # them.
 
                     # To complete this deprecation, remove from here to the
-                    # try/except block as well as the try/except itself,
+                    # second try/except block as well as the try/except itself,
                     # leaving `unpacked_vars = ...` and the "else" statements.
-                    if not isinstance(item, (list, tuple)):
-                        len_item = 1
-                    else:
+                    try:
                         len_item = len(item)
+                    except TypeError:  # not an iterable
+                        len_item = 1
                     # Check loop variable count before unpacking
                     if num_loopvars != len_item:
                         raise ValueError(
